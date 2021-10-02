@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" type="text/css" href="asset/css/popup.css">
+   </head>
+   <body class="popup-window">   
+
+      <div class="p-5" id="default_view_container">
+         <div class="board_dropd">
+            <div class="search_box">
+              <div class="newsearchbox">
+                <img src="asset/image/search.png">
+                <input class="full_search_bx" type="text" placeholder="Search" id="pop_search_box">
+              </div>
+            </div>
+            <select class="custom-select" id="pop_choose_board"></select>
+            <div class="board_sec">
+              <div id="message"></div>
+
+              <div id="pop_column_list"></div>
+
+              <div class="d-none" id="add-column-container">
+                <div class="headnew hidden hiddenInput">
+                  <input type="text" id="column_inputbox" placeholder="Column Name" maxlength="110">
+                </div>
+              </div>
+
+              
+              <div class="align-items-center pointer" id="create-column-btn">
+                <div class="headnew" style="float: left;"> Create New </div>
+                <div class="float-right" style="text-align:center;">
+                  <button style="width:auto; margin-right: 20px;" class="btn btn-sm btn-success d-none" id="add-column">
+                    Add
+                  </button>
+                </div>
+              </div>
+
+
+            </div>
+            
+          
+            <div class="row set_btm">
+               <div class="col-3">                
+                  <button class="btn btn-success btn-block noBorderRadius"
+                    id="pop_open_qlearly_btn">
+                    Open Qlearly
+                  </button>
+               </div>
+               <div class="col-3">
+                  <button class="btn btn-success btn-block" 
+                    id="pop_save_session_btn">
+                    Save All
+                  </button>
+               </div>
+               <div class="col-3">
+                  <button class="btn btn-success btn-block noBorderRadius"
+                    id="pop_save_current_tab">
+                    Save Current
+                  </button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="asset/js/jquery-3.3.1.slim.min.js"></script>
+      <script src="asset/js/custom.min.js"></script>
+      <script src="asset/js/popup.min.js"></script>
+   </body>
+</html>

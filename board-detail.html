@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="/asset/image/icons/16.png" id="favicon">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="asset/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/css/darktheme.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/css/introjs.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/css/custom.css" crossorigin="anonymous">
+    <title>Personal Boards</title>
+  </head>
+  <body class="board-detail-page hide">
+    <div class="big-centered-loader">
+      <p></p>
+    </div>
+<header class="header">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class=" navbar-collapse " id="navbarNav">
+      <ul class="navbar-nav mr-auto firstmenu">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <img src="asset/image/home.svg">
+          </a>
+        </li>
+         <li class="inputli">
+          <div class="fancyradio d-none" title="Remove from favorites">
+            <input type="checkbox" value="make_favorite" id="make_favorite" autocomplete="make_favorite">
+            <span></span>
+          </div>
+          <input id="selected_board_name" class="ml-2">
+        </li>
+        <li class="nav-item dropdown board-dropdown">
+          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="homebtn float-left">
+                <span class="text-truncate">&nbsp;Boards&nbsp;</span>
+              </span>
+              <img src="asset/image/drop_down_icon.png">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right uparrow" aria-labelledby="navbarDropdown"
+          id="board_menu">
+          </div>
+        </li>
+
+        <li class="nav-item dropdown board-dropdown">
+          <a class="nav-link" href="#" id="setting-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="homebtn float-left">
+                <span class="text-truncate">&nbsp;Settings&nbsp;</span>
+              </span>
+              <img src="asset/image/drop_down_icon.png">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right uparrow" aria-labelledby="setting-dropdown">
+              <a class="dropdown-item text-truncate link-hover" id="delete_board"> <span>Delete</span> </a>
+              <a class="dropdown-item text-truncate link-hover" id="duplicate_board"> <span>Duplicate</span> </a>
+              <a class="dropdown-item text-truncate link-hover" id="share_board_btn"> <span>Share </span></a>
+              <a class="dropdown-item text-truncate link-hover" id="import_board_btn" data-toggle="modal" data-target="#import_bookmark_modal"> <span>Import </span></a>
+              <a class="dropdown-item text-truncate link-hover" id="export_board_btn"> <span>Export </span></a>
+              <a class="dropdown-item text-truncate link-hover" id="sync_board_btn"> <span>Sync </span></a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav centermenu secondmenu" id="center_search" >
+        <form class="form-inline search_barnew dropdown">
+            <span class="clearsearch"><img src="asset/image/cross_icon_red.png"></span>
+            <img src="asset/image/search.png">
+            <input type="text" class="form-control" placeholder="Search" id="top_search" autocomplete="off" data-toggle="dropdown" aria-haspopup="true"  aria-expanded="false">
+
+            <ul class="list-group list-group-flush dropdown-menu mt-3 p-0" aria-labelledby="top_search" id="search_result"></ul>
+        </form>
+      </ul>
+      <ul class="navbar-nav thirdmenu">
+        <li class="nav-item active showOnResp">
+        <a class="nav-link showSearch" href="javascript:void(0);">
+            <img src="asset/image/blue_search.png" height="14">
+          </a>
+        </li>
+        <li class="nav-item active mr-auto homebtn" id="open_bookmark_btn">
+          <a class="nav-link d-flex showCrntSsion" href="#" data-type="bookmark">
+            <span class="">Bookmarks</span>
+          </a>
+        </li>
+        <li class="nav-item active mr-auto homebtn" id="showCrntSsion_container">
+          <a class="nav-link d-flex showCrntSsion" href="#" id="showCrntSsion" data-type="current_tabs">
+            <span class="">Opened Tabs</span>
+          </a>
+        </li>
+        <li class="nav-item active posrel profile_container" id="profile_container">
+            <a class="nav-link d-flex optSettings" href="#" id="show_user_name">
+              <img src="asset/image/profile_icon.png" class="showOnResp" height="18">
+              <span class="homebtn">Profile</span>
+            </a>
+        </li>
+       
+      </ul>
+    </div>
+  </nav>
+</header>
+    <div class="sidebarRight" id="csc_right">
+      <ul class="list-group list-group-flush mt-3  csc-entry-list">
+          <li>You have no open tabs</li>
+      </ul>
+    </div>
+    <div id="guestmode"></div>
+    <div class="container-fluid mngRightSidegap">
+      <div class="row">
+        <div class="col-sm-12 makescroll mt-3">
+          <div class="row align-items-stretch px-2 scroller scrolled_sec column-container" id="column_container">
+            <div class="col-3 widthSec px-2" id="create_column_btn">
+               <div class="white_box fullheight  text-center dotted_box d-flex justify-content-center align-items-center screen_height">
+                  <a href="javascript:void(0);" data-toggle="modal" data-target="#createNewBoard">
+                     <div class="p-3 d-flex justify-content-around">
+                        <img src="asset/image/plus_icon.png">
+                     </div>
+                     <div class="media-body text-center align-self-center">
+                        Create Column
+                     </div>
+                  </a>
+               </div>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="createNew" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+             <div class="modal-body">
+              <h4 class="modal-title text-center" id="exampleModalLabel">Create New
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><img src="asset/image/cross_icon.png" height="20"></button>
+              </h4>
+              <form class="mt-5 px-5" id="create_new_entry_btn">
+                <div class="form-group mb-4">
+                  <input class="form-control lineInput" type="text" placeholder="Entry Title" id="entry_title" autocomplete="entry_title">
+                  <div class="input_underline"></div>
+                  <span class="text-danger"><small id="er_entry_title"></small></span>
+                </div>
+                <div class="form-group mb-4">
+                  
+                  <input class="form-control lineInput" type="text" placeholder="http://example.com" id="entry_website_url" autocomplete="entry_website_url">
+                  <div class="input_underline"></div>
+                  <span class="text-danger"><small id="er_entry_website_url"></small></span>
+                </div>
+                <div class="form-group mb-4">
+                  <button class="btn theme_btn btn-block btn-block btn-lg" 
+                    type="submit">
+                    CREATE
+                  </button>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+<!-- The Modal -->
+<div class="modal fade" id="import_export_model">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    
+      <!-- Modal Header -->
+      
+      <div class="modal-body">
+        <div class="modal-header mb-3">
+        <h4 class="modal-title text-white">Bulk Edit</h4>
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="accordion" id="accordionExample">
+        
+        <div class="card">
+          <div class="card-header" id="importUrl">
+            <h5 class="mb-0">
+              <button id="import_urls" class="import-btn btn theme_btn btn-block">
+                Import
+              </button>
+              <h6 data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Import URLs
+              </h6>              
+            </h5>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="importUrl" data-parent="#accordionExample">
+            <div class="card-body">
+              <textarea rows="10"  placeholder="Import URLs" class="form-control" id="import_editor"></textarea>
+              
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header" id="exportUrl">
+            <h5 class="mb-0">
+              <button id="edit_all_urls" class="import-btn btn theme_btn btn-block">
+                Edit
+              </button>
+              <button class="import-btn btn theme_btn btn-block hide mt-0" 
+                id="save_all_urls" >
+                Save
+              </button>
+              <h6 data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" id="export-editor-title">
+                Export or Bulk Edit
+              </h6>
+            </h5>
+          </div>
+
+          <div id="collapseTwo" class="collapse show" aria-labelledby="exportUrl" data-parent="#accordionExample">
+            <div class="card-body">
+              <textarea rows="10" placeholder="Export or Bulk Edit" class="form-control" id="export_editor"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>     
+    </div>
+  </div>
+</div>
+ 
+ 
+
+<!-- The Modal -->
+<div class="modal fade full-screen" id="edit_note_model">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header mb-3">
+        <h4 class="modal-title text-white">Edit Note</h4>
+        <button type="button" class="close text-white" data-dismiss="modal">&times;</button>
+      </div>
+      <form method="post" id="edit_note_form">
+          <div class="col-md-12">
+            <label class="text">Note Title</label>
+            <div class="form-group">
+              <input type="text" name="note_title" class="form-control" id="note_title" placeholder="Type title here" autocomplete="note_title">
+            </div>
+          </div>
+          <div class="col-md-12">
+              <label class="text">Note Body</label>
+              <div class="form-group">
+                <textarea rows="10"  placeholder="Type body here" class="form-control" id="note_body" autocomplete="note_body"></textarea>
+              </div>
+
+              <div class="form-group mb-4">
+                <button class="btn btn-primary p-2 px-4" type="submit">
+                  Update
+                </button>
+                <button class="btn btn-primary kbd p-2 px-4">
+                  Cancel
+                </button>
+              </div>
+          </div>
+        
+      </form>
+      </div>     
+    </div>
+  </div>
+</div>
+
+
+<!-- The Modal -->
+<div class="modal fade" id="column_type_model">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header nobrdr">
+        <h4 class="modal-title text-center">Board Type
+          <p class="mb-0">Click to choose board type...</p>
+        </h4>        
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body p-4">
+
+        <div class="row px-2">
+          <div class="col-md-9 m-auto">
+            <div class="row">
+              <div class="col-md-3 px-2 text-center">
+                <div class="columnType pointer" id="column_type_link">
+                <img src="asset/image/link_image.png" height="30" class="mt-2">
+                <h6 class="my-2">Links</h6>
+              </div>
+              </div>
+              <div class="col-md-3 px-2 text-center">
+                <div class="columnType pointer" id="column_type_check_list">
+                <img src="asset/image/checklist.png" height="30" class="mt-2">
+                <h6 class="my-2">Check list</h6>
+              </div>
+              </div>
+              <div class="col-md-3 px-2 text-center">
+                <div class="columnType pointer" id="column_type_notes">
+                  <img src="asset/image/notes.png" height="30" class="mt-2">
+                  <h6 class="my-2">Notes</h6>
+                </div>
+              </div>
+              <div class="col-md-3 px-2 text-center">
+                <div class="columnType pointer" id="column_type_rss_feeds">
+                <img src="asset/image/rss_feed.png" height="30" class="mt-2">
+                <h6 class="my-2">RSS Feeds</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <div class="col-sm-8 m-auto px-2 pt-4">
+            <button class="btn theme_btn btn-block" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="add_bookmark" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body text-center py-5">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <img src="asset/image/bookmark_icon.png" alt="bookmark icon" />
+            <h4 class="mb-2 mt-3">Import Your Bookmarks</h4>
+
+            <p>Don't want to waste time manually importing your bookmarks?<br> Use the option on your right 'Import From Browser'</p>
+            <div class="row mt-4 mb-5 px-md-3 px-2">
+              <div class="col-6 text-center px-md-3 px-2">
+                <input type="radio" name="addbookmark" value="manually" class="bbox" autocomplete="manually">
+                <div class="radioTab p-3 p-sm-4">
+                  <img src="asset/image/keyboard_icon.png" alt="keyboard icon" />
+                  <h5 class="text-uppercase mt-3">Add Manually</h5>
+
+                  <p class="text-muted">Start from a blank slate and <br>add bookmarks as you go.</p>
+                </div>
+              </div>
+              <div class="col-6 text-center px-md-3 px-2">
+                <input type="radio" name="addbookmark" value="selected_bm" class="bbox" autocomplete="add">
+                <div class="radioTab p-3 p-sm-4">
+                  <img src="asset/image/display.png" alt="display icon" />
+                  <h5 class="text-uppercase mt-3">Import From Browser</h5>
+                  <p class="text-muted">Import your browsers bookmarks in bulk<br>by selecting folders.</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12 text-center">
+                <button class="btn btn-success px-4 py-3 noBorderRadius grey" id="choose_bn_skip">SKIP</button>
+                <button class="btn btn-success px-4 py-3 noBorderRadius open-login ml-1">LOGIN</button>
+                <button class="btn btn-success px-4 py-3 noBorderRadius ml-1" id="choose_bn_next">NEXT</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+ <div class="modal fade" id="select_folder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center py-5">
+        <div class="row">
+          <div class="col-lg-11 mx-auto">
+
+            <h2 class="mb-3"> Select the folders you would like to import</h2>
+
+            <p>Below is a list of your browser bookmarks. A board will be created with the folders you select. Each folder will represent 1 column. Don't worry, you can do this later as well</p>
+
+            <div class="tagsholder text-left my-5 px-md-3 px-2" id="bookmark_modal">
+            </div>
+
+            <div class="row">
+              <div class="col-sm-12 text-left" id="flash-data"></div>
+              <div class="col-sm-12 text-center">
+                  <button class="btn btn-success px-4 py-3 noBorderRadius grey" id="choose_back_btn2" data-target="#import_bookmark_modal" data-toggle="modal" data-dismiss="modal">Back</button>
+                <button class="btn btn-success px-4 py-3 noBorderRadius grey d-none" id="choose_bn_back">Back</button>
+                <button class="btn btn-success px-4 py-3 noBorderRadius ml-1" id="import_bookmark_btn">
+                    Import Your Bookmarks
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<a href="" id="downloadAnchorElem" class="d-none"></a>
+<div id="message"></div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="import_bookmark_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body text-center py-5">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+            <h2 class="mb-3">Choose an importing option</h2>
+            <p class="text">You can either import specific folders from your browser or import an entire .html file</p>
+            <div class="row mt-5 mb-5 px-md-3 px-2">
+              <div class="col-6 text-center px-md-3 px-2 pointer">
+                <div class="radioTab p-3 p-sm-4" data-target="#select_folder" data-toggle="modal" data-dismiss="modal">
+                    <img src="asset/image/display.png" alt="keyboard icon" />
+                    <h5 class="text-uppercase mt-3 text">Import From Browser</h5>
+                    <p class="text-muted">Import your browsers bookmarks in bulk<br>by selecting folders.</p>
+                </div>
+              </div>
+              <div class="col-6 text-center px-md-3 px-2">
+                <input type="file" name="import_bookmark_file" class="bbox" id="import_bookmark_file" autocomplete="import_bookmark_file">
+                <div class="radioTab p-3 p-sm-4">
+                    <img src="asset/image/import-black.png" alt="display icon" />
+                  <h5 class="text-uppercase mt-3 text">Import File</h5>
+                  <p class="text-muted">Import a .html file <br /> &nbsp;</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                  <button class="btn btn-danger px-4 py-3 noBorderRadius" data-dismiss="modal" >Cancel</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="asset/js/jquery-3.3.1.slim.min.js" ></script>
+    <script src="asset/js/popper.min.js" ></script>
+    <script src="asset/js/bootstrap.min.js"></script>
+    <script src="asset/js/jquery-ui-min.js"></script>
+    <script src="asset/js/modal.js"></script>
+    <script src="asset/js/custom.min.js"></script>
+  </body>
+</html>
